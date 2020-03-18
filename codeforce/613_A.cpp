@@ -2,10 +2,11 @@
 using namespace std;
 
 int main(){
-	char inp[11];
-	int l=0,r=0;
-	
-	for(int i=0; i<11;i++){
+	int l=0,r=0,n;
+	cin>>n;
+	char inp[n];
+		
+	for(int i=0; i<n;i++){
 		cin>>inp[i];
 		if(inp[i]=='L'){l++;
 		}
