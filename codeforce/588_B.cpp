@@ -1,33 +1,33 @@
 #include<iostream>
 #include<string>
-#include<vector>
 #include<algorithm>
 using namespace std;
 
 int main(){
-	int n,k,j=0,diff;
-	string str1;
-	cin>>n>>k>>str1;
-	diff=n-k;
-	int str2[diff];
+	int length,change=0,count=0;
+	string number;
 
-	if(n==k){
-		for(int i=0;i<n;i++){
-			cout<<'0';
+	cin>>length>>change>>number;
+	if(change!=0){
+		if(length==change){
+		cout<<'0';
 		}
-	}
 	else{
-		for(int i=k;i<n;i++){
-			str2[j]=(int)str1[i]-48;
-			j++;
+		if(number[0]!='1'){
+			number[0]='1';
+			count++;
 		}
-		int ans=1;
-		for(int i=1;i<k;i++){
-			ans*=10;
-		}
-		cout<<ans;
-		for (int i=0;i<diff;i++){
-			cout<<str2[i];
-		}
-	}
+		if(count!=change){
+			for(int i=1;i<length;i++){
+			if(number[i]!='0'){
+				number[i]='0';
+				count++;
+			}
+			if(count==change){
+				break;
+			}
+		}}	
+		cout<<number;
+	}}
+	else{cout<<number;}
 }
