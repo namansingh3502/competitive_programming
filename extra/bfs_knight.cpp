@@ -3,8 +3,10 @@
 using namespace std;
 
 int main(){
+	int test;
+	cin>>test;
+	for(int t=0;t<test;t++){
 	string start,last;
-	int ans,count=0,element=1;
 
 	vector<int> row;
 	vector<int> col;
@@ -36,9 +38,10 @@ int main(){
 				distance[row[i]+2][col[i]+1] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]+2)==end_rows && (col[i]+1)==end_cols){
-				ans=1;
+				cout<<distance[row[i]+2][col[i]+1]<<endl;
 				break;
 			}
+		
 		}
 		if((row[i]+1)<9 && (col[i]+2)<9){
 			if(board[row[i]+1][col[i]+2]!=1){
@@ -48,7 +51,7 @@ int main(){
 				distance[row[i]+1][col[i]+2] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]+1)==end_rows && (col[i]+2)==end_cols){
-				ans=1;
+				cout<<distance[row[i]+1][col[i]+2]<<endl;
 				break;
 			}
 		}
@@ -60,7 +63,7 @@ int main(){
 				distance[row[i]-1][col[i]+2] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]-1)==end_rows && (col[i]+2)==end_cols){
-				ans=1;
+				cout<<distance[row[i]-1][col[i]+2]<<endl;
 				break;
 			}
 		}
@@ -72,7 +75,7 @@ int main(){
 				distance[row[i]-2][col[i]-1] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]-2)==end_rows && (col[i]-1)==end_cols){
-				ans=1;
+				cout<<distance[row[i]-2][col[i]-1]<<endl;
 				break;
 			}
 		}
@@ -84,7 +87,7 @@ int main(){
 				distance[row[i]-2][col[i]-1] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]-2)==end_rows && (col[i]-1)==end_cols){
-				ans=1;
+				cout<<distance[row[i]-2][col[i]-1]<<endl;
 				break;
 			}
 		}
@@ -96,7 +99,7 @@ int main(){
 				distance[row[i]-1][col[i]-2] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]-1)==end_rows && (col[i]-2)==end_cols){
-				ans=1;
+				cout<<distance[row[i]-1][col[i]-2]<<endl;
 				break;
 			}
 		}
@@ -108,7 +111,7 @@ int main(){
 				distance[row[i]+1][col[i]-2] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]+1)==end_rows && (col[i]-2)==end_cols){
-				ans=1;
+				cout<<distance[row[i]+1][col[i]-2]<<endl;
 				break;
 			}
 		}
@@ -120,14 +123,9 @@ int main(){
 				distance[row[i]+2][col[i]-1] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]+2)==end_rows && (col[i]-1)==end_cols){
-				ans=1;
+				cout<<distance[row[i]+2][col[i]-1]<<endl;
 				break;
 			}
 		}
-		element+=count;
-	}
-
-	for(int i=0;i<row.size();i++){
-		cout<<row[i]<<" "<<col[i]<<" "<<distance[row[i]][col[i]]<<endl;
-	}
+	}}
 }
