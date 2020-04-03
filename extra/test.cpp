@@ -42,25 +42,34 @@ int ans(pair<int, int> initial, pair<int, int> final)
             }
         }
     }
+
     return count;
 }
 
 int my(int rows,int cols,int end_rows,int end_cols ){
 	
-
 	vector<int> row;
 	vector<int> col;
 
 	vector<vector<int> > board(9,vector<int> (9,0));
 	vector<vector<int> > distance(9,vector<int> (9,98779));
+	
+	//cin>>start>>last;
+	int sol=0;
+	//int rows=(int)start[0]-96;
+	//int cols=(int)start[1]-48;
+	distance[rows][cols]=0;
+	board[rows][cols]=1;
+
+	//int end_rows=(int)last[0]-96;
+	//int end_cols=(int)last[1]-48;
 
 	row.push_back(rows);
 	col.push_back(cols);
+
 	
-	distance[rows][cols]=0;
-	board[rows][cols]=1;
-	
-		for(int i=0;i<row.size();i++){
+	if(rows!=end_rows || cols!=end_cols){
+	for(int i=0;i<row.size();i++){
 
 		if((row[i]+2)<9 && (col[i]+1)<9){
 			if(board[row[i]+2][col[i]+1]!=1){
@@ -71,7 +80,8 @@ int my(int rows,int cols,int end_rows,int end_cols ){
 			}
 
 			if((row[i]+2)==end_rows && (col[i]+1)==end_cols){
-				return (distance[row[i]][col[i]]+1);
+				sol= distance[row[i]][col[i]]+1;
+				break;
 			}
 		}
 		if((row[i]+1)<9 && (col[i]+2)<9){
@@ -82,7 +92,8 @@ int my(int rows,int cols,int end_rows,int end_cols ){
 				distance[row[i]+1][col[i]+2] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]+1)==end_rows && (col[i]+2)==end_cols){
-				return (distance[row[i]][col[i]]+1);
+				sol= distance[row[i]][col[i]]+1;
+				break;
 			}
 		}
 		if((row[i]-1)>0 && (col[i]+2)<9){
@@ -93,10 +104,11 @@ int my(int rows,int cols,int end_rows,int end_cols ){
 				distance[row[i]-1][col[i]+2] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]-1)==end_rows && (col[i]+2)==end_cols){
-				return (distance[row[i]][col[i]]+1);
+				sol= distance[row[i]][col[i]]+1;
+				break;
 			}
 		}
-		if((row[i]-2)>0 && (col[i]+1)>0){
+		if((row[i]-2)>0 && (col[i]+1)<9){
 			if(board[row[i]-2][col[i]+1]!=1){
 				row.push_back(row[i]-2);
 				col.push_back(col[i]+1);
@@ -104,7 +116,8 @@ int my(int rows,int cols,int end_rows,int end_cols ){
 				distance[row[i]-2][col[i]+1] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]-2)==end_rows && (col[i]+1)==end_cols){
-				return (distance[row[i]][col[i]]+1);
+				sol= distance[row[i]][col[i]]+1;
+				break;
 			}
 		}
 		if((row[i]-2)>0 && (col[i]-1)>0){
@@ -115,7 +128,8 @@ int my(int rows,int cols,int end_rows,int end_cols ){
 				distance[row[i]-2][col[i]-1] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]-2)==end_rows && (col[i]-1)==end_cols){
-				return (distance[row[i]][col[i]]+1);
+				sol= distance[row[i]][col[i]]+1;
+				break;
 			}
 		}
 		if((row[i]-1)>0 && (col[i]-2)>0){
@@ -126,7 +140,8 @@ int my(int rows,int cols,int end_rows,int end_cols ){
 				distance[row[i]-1][col[i]-2] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]-1)==end_rows && (col[i]-2)==end_cols){
-				return (distance[row[i]][col[i]]+1);
+				sol= distance[row[i]][col[i]]+1;
+				break;
 			}
 		}
 		if((row[i]+1)<9 && (col[i]-2)>0){
@@ -137,7 +152,8 @@ int my(int rows,int cols,int end_rows,int end_cols ){
 				distance[row[i]+1][col[i]-2] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]+1)==end_rows && (col[i]-2)==end_cols){
-				return (distance[row[i]][col[i]]+1);
+				sol= distance[row[i]][col[i]]+1;
+				break;
 			}
 		}
 		if((row[i]+2)<9 && (col[i]-1)>0){
@@ -148,11 +164,14 @@ int my(int rows,int cols,int end_rows,int end_cols ){
 				distance[row[i]+2][col[i]-1] = distance[row[i]][col[i]]+1;
 			}
 			if((row[i]+2)==end_rows && (col[i]-1)==end_cols){
-				return (distance[row[i]][col[i]]+1);
+				sol= distance[row[i]][col[i]]+1;
+				break;
 			}
 		}
 	}
-	return 0;
+}
+
+	return sol;
 }
 
 int main(){
@@ -171,8 +190,8 @@ for(int i=1;i<9;i++){
 					cout<<wa<<endl;
 					cout<<i<<" "<<j<<" "<<k<<" "<<l<<endl;
 					cout<<a1<<" "<<b1<<endl;
-					wa++;
-				}
+					wa++;}
+				
 			}
 			}
 		}
