@@ -1,33 +1,30 @@
 #include<iostream>
-#include<string>
-#include<algorithm>
 using namespace std;
 
 int main(){
-	int length,change=0,count=0;
-	string number;
+	string s;
+	int length,changes;
 
-	cin>>length>>change>>number;
-	if(change!=0){
-		if(length==change){
+	cin>>length>>changes>>s;
+
+	if(length==1 && changes==1){
 		cout<<'0';
+		return 0;
+	}
+	if(changes!=0){
+		if(s[0]!='1'){
+			s[0]='1';
+			changes--;
 		}
-	else{
-		if(number[0]!='1'){
-			number[0]='1';
-			count++;
+		for(int i=1;i<=length;i++){
+				if(changes==0){
+					break;}
+				if(s[i]!='0'){
+				s[i]='0';
+				changes--;}
+
 		}
-		if(count!=change){
-			for(int i=1;i<length;i++){
-			if(number[i]!='0'){
-				number[i]='0';
-				count++;
-			}
-			if(count==change){
-				break;
-			}
-		}}	
-		cout<<number;
-	}}
-	else{cout<<number;}
+	}
+	cout<<s;
+	return 0;
 }
