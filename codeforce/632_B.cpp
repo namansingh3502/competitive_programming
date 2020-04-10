@@ -41,7 +41,7 @@ int main(){
 									pos.first='y';
 									break;
 								}
-								else if(m+1==length && pos.first!='y'){ans=0;break;}
+								else if(m==i-1 && pos.first!='y'){ans=0;break;}
 							}
 							if(pos.first!='y'){
 								pos.second=i-1;
@@ -55,7 +55,7 @@ int main(){
 									neg.first='y';
 									break;
 								}
-								else if(m+1==length && neg.first!='y'){ans=0;break;}
+								else if(m==i-1 && neg.first!='y'){ans=0;break;}
 							}
 							if(neg.first!='y'){
 								neg.second=i-1;
