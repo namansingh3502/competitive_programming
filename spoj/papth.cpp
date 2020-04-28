@@ -82,27 +82,7 @@ int main(){
 						
 					}
 				}
-				
-				
-				/*for(int j=arr[3];j<=9;j++){
-					new_num = first - arr[3] * pow(10,3) + j * pow(10,3);
-				
-					
-					if(new_num!=first){
-						int r=check(new_num);
-						if(r==1){
-							if(visited.find(new_num)==visited.end()){		
-								num.push(new_num);
-								visited.insert({new_num,1});
-							}
-						}
-					}
-					if(new_num==end){ans=1;}
-
-
-				}
-				if(ans==1){cout<<count<<endl;
-					break;}*/
+			
 				
 			}
 
