@@ -9,7 +9,6 @@ int main(){
 	vector<int> row;
 	for(int i=0;i<graph.size();i++){
 		for(int j=0;j<graph[i].size();j++){
-			cout<<graph[i][j]<<" ";
 		}
 		cout<<endl;
 	}
@@ -24,10 +23,10 @@ int main(){
 			for(int j=0;j<graph[row[i]].size();j++){
 
 				if(map[graph[row[i]][j]]!=1){
+					
 					row.push_back(graph[row[i]][j]);
 					map[graph[row[i]][j]]=1;
 
-					cout<<graph[row[i]][j]<<" a "<<row[i]<<endl;
 				}
 			}
 

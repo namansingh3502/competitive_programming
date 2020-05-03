@@ -31,26 +31,28 @@ int main(){
 			cords.pop();
 			r=node.first;
 			c=node.second;
-			cout<<"   a"<<r<<" "<<c<<endl;
+			
 			if(visited[r][c]!=1){
 				visited[r][c]=1;
 				land++;
 				cords2.push(make_pair(r,c));
+				
 				while(cords2.size()!=0){
 					pair<int, int> node2 = cords2.front();
 					r=node2.first;
 					c=node2.second;
-					cout<<"  b"<<r<<" "<<c<<endl;
+					
 					for(int k=0;k<8;k++){
             			int x = r + arr_r[k];
             			int y = c + arr_c[k];
-            		cout<<" c"<<x<<" "<<y<<endl;	
+            			
             			if((0<x && x<=row) && (0<y && y<=col)){
-                		if(cord[x][y]=='#' && visited[x][y]!=1){
-                	cout<<"c"<<x<<" "<<y<<endl;
-                			cords2.push(make_pair(x,y));
-                			visited[x][y] = 1;
+                			
+                			if(cord[x][y]=='#' && visited[x][y]!=1){
+    	            			cords2.push(make_pair(x,y));
+	                			visited[x][y] = 1;
                 	}}}
+			
 					cords2.pop();
 		}}}
 		cout<<land<<endl;
