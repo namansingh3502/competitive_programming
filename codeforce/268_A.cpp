@@ -12,20 +12,33 @@ using namespace std;
 
 
 void solve(){
-	long long n,m,a;
-	cin>>n>>m>>a;
-	long long b,c;
-	if( n % a ){
-		b = (n/a)+1;
-	}
-	else b = n/a;
+	int n,p;
+	cin>>n>>p;
+	vector<bool> num(250,true);
 
-	if( m % a ){
-		c = (m/a)+1;
+	int x,count=0;
+	for(int i=1; i<= p; i++){
+		cin>>x;
+		if(num[x]){
+			num[x]=false;
+			count++; 
+		}
 	}
-	else c = m/a;
+	cin>>p;
+	for(int i=1; i<= p; i++){
+		cin>>x;
+		if(num[x]){
+			num[x]=false;
+			count++; 
+		}
+	}
+	if(n==count){
+		cout<<"I become the guy.";
+	}
+	else{
+		cout<<"Oh, my keyboard!";
+	}
 
-	cout<< b*c;
 }
 
 int main(){
