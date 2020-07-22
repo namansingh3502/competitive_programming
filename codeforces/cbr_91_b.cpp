@@ -6,22 +6,20 @@ using namespace std;
 
 int main(){
 
-	int num=0;
-
 	string str;
+	int arr[]={0,0};
+
 	cin>>str;
 
-	unordered_map< int , int > count;
-	
 	for( int i = 0; str[i]; i++ ){
-
-		if( str[i] == '4' || str[i] == '7' ){
-			num *= 10;
-			num += str[i] - '0';
-			count[ num ] += 1;
-		}
-		else num = 0;
-
+		if( str[i] == '4' ) arr[ str[i] % 2 ]++;
+		else if( str[i] == '7' ) arr[ str[i] % 2 ]++;
 	}
+
+	if( arr[0] >= arr[1] && arr[0] != 0 ) cout<<'4'<<endl;
+	else if( arr[1] > arr[0] ) cout<<'7'<<endl;
+	else cout<<-1<<endl;
+
+	return 0;
 
 }

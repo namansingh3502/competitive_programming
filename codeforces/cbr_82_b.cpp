@@ -1,59 +1,39 @@
 #include<iostream>
+#include<vector>
 using namespace std;
 
 int main(){
 
-	int n,m_price;
-	int a,b,c,d,ans=1;
-
+	int n,mn=10000,ans=1;
 	cin>>n;
 
-	cin>>a>>b>>c>>m_price;
- 
-	int m_speed[]={ a, b, c };
-	int m_hdd[] = { a, b, c };
-	int m_ram[] = { a, b, c };
+	int speed[n], ram[n], hdd[n], price[n];
+	vector< int > out( n , 1 );
 
-	for( int i = 1; i < n; i++ ){
-		cin>>a>>b>>c>>d;
+	for( int i = 0; i < n; i++ ){
+		cin>>speed[i]>>ram[i]>>hdd[i]>>price[i];
+	}
 
-		if( m_speed[ 0 ] <= a || m_speed[ 1 ] <= b || m_speed[ 2 ] <= c ){
-			m_speed[ 0 ] = a;
-			m_speed[ 1 ] = b;
-			m_speed[ 2 ] = c;
+	for( int i = 0; i < n; i++ ){
+		if( out[i] )
+			for( int j = i+1; j < n; j++ )
+				if( out[j] ){
+					if( speed[i] < speed[j] && ram[i] < ram[j] && hdd[i] < hdd[j] )
+					out[i]=0;
 
-			if( m_price > d ){
-				m_price = d;
-				ans = i + 1;
-			}
-		}
+					if( speed[i] > speed[j] && ram[i] > ram[j] && hdd[i] > hdd[j] )
+					out[j]=0;
+				}
+	}
 
-		if( m_ram[ 0 ] <= a || m_ram[ 1 ] <= b || m_ram[ 2 ] <= c ){
-			m_ram[ 0 ] = a;
-			m_ram[ 1 ] = b;
-			m_ram[ 2 ] = c;
-		
-			if( m_price > d ){
-				m_price = d;
-				ans = i + 1;
-			}
-		}
-		if( m_hdd[ 0 ] <= a || m_hdd[ 1 ] <= b || m_hdd[ 2 ] <= c ){
-			m_hdd[ 0 ] = a;
-			m_hdd[ 1 ] = b;
-			m_hdd[ 2 ] = c;
-		
-			if( m_price > d ){
-				m_price = d;
-				ans = i + 1;
-			}
+	for( int i = 0; i < n; i++ ){
+		if( mn > price[i] && out[i] == 1 ){
+			mn = min( mn, price[i] );
+			ans = i + 1;
 		}
 	}
 
-	cout<<m_speed[0]<<" "<<m_speed[1]<<" "<<m_speed[2]<<endl;
-	cout<<m_ram[0]<<" "<<m_ram[1]<<" "<<m_ram[2]<<endl;
-	cout<<m_hdd[0]<<" "<<m_hdd[1]<<" "<<m_hdd[2]<<endl;
+	cout<<ans<<endl;
 
 	return 0;
-
 }
