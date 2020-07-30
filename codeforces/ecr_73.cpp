@@ -4,16 +4,9 @@
 using namespace std;
 
 void solve(){
-	int a,b,c,mn,ans;
+	int a,b,c;
 	cin>>a>>b>>c;
-
-	if( a == 0 || b == 0 ) cout<<0<<endl
-	else{ 
-		mn = min( min( a, b ), c );
-		ans = mn;
-		a -= mn;	b -= mn;	c -= mn;
-		if( a || )
-	}
+	cout<<min( min(a,b), (a+b+c)/ 3)<<endl;
 }
 
 int main(){
