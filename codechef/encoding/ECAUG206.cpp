@@ -38,26 +38,6 @@ void solve(){
 		count++;
 		
 	}
-	/*while(!q.empty()){
-		n = q.top();
-		q.pop();
-		
-		f = n.first;
-		s = n.second;
-
-		if(visited[s] == 1)
-			continue;
-
-		visited[s] = 1;
-		dist += f;
-
-		for(int i = 0; i < adj[s].size(); i++){
-			m = adj[s][i].second;
-			if(visited[m] == 0){
-				q.push(adj[s][i]);
-			}
-		}
-	}*/
 	cout<<count<<endl;
 }
 
