@@ -17,7 +17,7 @@ void solve(){
     for( int i = 0; i < n; i++ )  cin>>attack[i];
     for( int i = 0; i < n; i++ )  cin>>health[i];
 
-    int mx;
+    int mx=0;
     ll damage=0;
 
     for( int i = 0;i < n; i++ ){
