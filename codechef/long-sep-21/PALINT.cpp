@@ -9,33 +9,36 @@ using namespace std;
 
 void solution(){
 
-	int n,x;
+	ll n,x,y,ans;
 	cin>>n>>x;
 
-	ll arr[n][2];
-	map<int, int> count;
+	ll arr[n];
+	map<ll, ll> count,xored;
 
-	for( int j = 0; j < n; j++ ){
-		cin>>arr[j][0];
-		arr[j][1] = arr[j][0] ^ x;
+	for( ll i = 0; i < n; i++ ){
+		cin>>arr[i];
+		y = arr[i] ^ x;
 
-		count[arr[j][0]] += 1;
-		count[arr[j][1]] += 1;
-	}
-
-	int mx=-1,steps=0,value;
-
-	for( auto i:count ) {
-		if( i.second > mx ){
-			mx = i.second;
-			value = i.first;
+		count[ arr[i] ] += 1;
+		if( y != arr[i] ){
+			count[ y ] += 1;
+			xored[ y ] += 1;
 		}
 	}
 
+	ll mx=-1,value;
 
-	for( int i = 0; i < n; i++ ) if( arr[i][1] == value ) steps++;
-	
-	cout<<mx<<" "<<steps<<endl;
+	for( auto i : count ){
+
+		y = i.first;
+		if( count[y] > mx ){
+			mx = count[y];
+			value = i.first;
+		}
+		else if( count[y] == mx && xored[y] < xored[value]) value = i.first;
+	}
+
+	cout << count[value] << " " << xored[value] << endl;
 }
 
 int main(){
